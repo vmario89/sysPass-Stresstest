@@ -6,7 +6,7 @@ Just some benchmark to find out how much passwords can be encrypted in a given a
 ```
 cd /opt
 git clone https://github.com/vmario89/sysPass-Stresstest.git
-cd /opt/sysPass-Stresstest
+cd /opt/sysPass-Stresstest/cURL-benchmark
 chmod +x /opt/sysPass-Stresstest/cURL-benchmark/*.sh
 ```
 
@@ -26,7 +26,7 @@ You should run this script on another server than the server which is running sy
 
 ```
 #Adjust the parameters as you like
-/opt/sysPass-Stresstest/syspass-stresstest-execute.sh --duration=10 --sessions=20
+/opt/sysPass-Stresstest/cURL-benchmark/syspass-stresstest-execute.sh --duration=10 --sessions=20
 ```
 
 Example Output:
