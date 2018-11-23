@@ -1,6 +1,5 @@
 # sysPass-Stresstest
 
-<<<<<<< HEAD
 Collection of benchmark variants for sysPass. One with cURL, the other with apache bench. Last one did not work in all my use cases - the first one too. So take a mixture ;-)
 =======
 Just some benchmark to find out how much passwords can be encrypted in a given amount of time and parallel requests. It's just a little script around the util "Apache Bench" which is called by "ab" command.
