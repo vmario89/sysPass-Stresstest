@@ -6,7 +6,7 @@ Just some benchmark to find out how much passwords can be encrypted in a given a
 ```
 cd /opt
 git clone https://github.com/vmario89/sysPass-Stresstest.git
-cd /opt/sysPass-Stresstest
+cd /opt/sysPass-Stresstest/ab-benchmark
 chmod +x /opt/sysPass-Stresstest/ab-benchmark/*.sh
 
 apt-get install apache-utils
@@ -28,12 +28,12 @@ You should run this script on another server than the server which is running sy
 
 ```
 #Adjust the parameters as you like
-/opt/sysPass-Stresstest/syspass-stresstest.sh
+/opt/sysPass-Stresstest/ab-benchmark/syspass-stresstest.sh
 ```
 
 Example Output:
 ```
-20:25:22 ✔ root@git-droid:/opt/sysPass-Stresstest# ./syspass-stresstest.sh
+20:25:22 ✔ root@git-droid:/opt/sysPass-Stresstest/ab-benchmark# ./syspass-stresstest.sh
 35 passwords
 400 requests
 400 concurrency
