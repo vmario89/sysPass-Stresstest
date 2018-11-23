@@ -1,25 +1,22 @@
 # sysPass-Stresstest
 
-<<<<<<< HEAD
-Collection of benchmark variants for sysPass. One with cURL, the other with apache bench. Last one did not work in all my use cases - the first one too. So take a mixture ;-)
-=======
 Just some benchmark to find out how much passwords can be encrypted in a given amount of time and parallel requests. It's just a little script around the util "Apache Bench" which is called by "ab" command.
 
 ## How to install
 ```
 cd /opt
-git clone https://leyghis.fablabchemnitz.de:8444/MarioVoigt/sysPass-Stresstest.git
+git clone https://github.com/vmario89/sysPass-Stresstest.git
 cd /opt/sysPass-Stresstest
-chmod +x /opt/sysPass-Stresstest/*.sh
+chmod +x /opt/sysPass-Stresstest/ab-benchmark/*.sh
 
-apt-get install apache2-utils
+apt-get install apache-utils
 ```
 
 ## How to configure
 Edit syspass-stresstest.sh parameters to match your instance. You need to create at least one API user token which has access to view passwords (method "account/viewPass").
 
 ```
-vim /opt/sysPass-Stresstest/syspass-stresstest.sh
+vim /opt/sysPass-Stresstest/ab-benchmark/syspass-stresstest.sh
 
 TOKENPASS
 AUTHTOKEN
@@ -49,4 +46,3 @@ Example Output:
 When starting the script you should monitor 
 * your Web Server / Database Server to check the load
 * your sysPass frontend how it responds - if it still does not slow down raise the amount of parallel sessions. Maybe also run the script from different servers / clients
->>>>>>> e5205bddce05baeed4638d74aee5f86775b98f60

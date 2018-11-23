@@ -19,7 +19,7 @@ PLOTFILE=plot.data
 
 echo $POST_DATA > $POSTFILE
 
-EXEC_STRING="ab -c $CONCURRENCY -n $REQUESTS -s $TIMEOUT -H 'Accept: */*' -H 'Cache-Control: no-cache' -p $POSTFILE -f TLS1.2 -T application/json -g $PLOTFILE -v $VERBOSITY $TARGET_URL"
+EXEC_STRING="ab -c $CONCURRENCY -n $REQUESTS -s $TIMEOUT -H 'Accept: */*' -H 'Cache-Control: no-cache' -p post.tmp -f TLS1.2 -T application/json -g $PLOTFILE -v $VERBOSITY $TARGET_URL"
 
 #echo $EXEC_STRING
 eval $EXEC_STRING > $LOGFILE 2>&1
