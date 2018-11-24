@@ -16,13 +16,13 @@ case $i in
 esac
 done
 
-if [[ -z "$DURATION_SECONDS" ]] || [[ "DURATION_SECONDS" < "1" ]]; then
-        echo "--duration parameter incorrect or missing (min 1)"
+if [[ -z "$DURATION_SECONDS" ]] || (( $DURATION_SECONDS < 1 )); then
+        echo "--duration parameter incorrect or missing (min +1)"
         exit
 fi
 
-if [[ -z "$PARALLEL_SESSIONS" ]] || [[ "$PARALLEL_SESSIONS" < "2" ]]; then
-        echo "--sessions parameter incorrect or missing (min 2)"
+if [[ -z "$PARALLEL_SESSIONS" ]] || (( $PARALLEL_SESSIONS < 1 )); then
+        echo "--sessions parameter incorrect or missing (min +1)"
         exit
 fi
 
@@ -52,7 +52,11 @@ rm syspass-stresstest-run-*.log
 echo Starting stress test for $DURATION_SECONDS seconds ...
 date +"%d.%m.%Y - %H:%M:%S"
 echo Please visit the frontend website and test if it still reacts smooth
-RUN_CMD="for RUN in {1..$PARALLEL_SESSIONS}; do \`nohup ./syspass-stresstest.sh > syspass-stresstest-run-\"\$RUN\".log 2>&1&\`;done" #pipe nohup output itself to /dev/null
+if (( $PARALLEL_SESSIONS == 1 )); then
+        RUN_CMD="nohup ./syspass-stresstest.sh > syspass-stresstest-run-"$RUN".log 2>&1&"
+else
+        RUN_CMD="for RUN in {1..$PARALLEL_SESSIONS}; do \`nohup ./syspass-stresstest.sh > syspass-stresstest-run-\"\$RUN\".log 2>&1&\`;done" #pipe nohup output itself to /dev/null
+fi
 eval $RUN_CMD
 
 progress-bar $DURATION_SECONDS #wait the given duration with progress bar display
