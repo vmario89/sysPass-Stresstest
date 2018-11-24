@@ -63,7 +63,5 @@ killall syspass-stresstest.sh
 date +"%d.%m.%Y - %H:%M:%S"
 
 #count the total count of encrypted passwords while checking if syspass frontend is still available smoothly for the users
-ENCRYPTED_COUNT=$(find ./ -name 'syspass-stresstest-run-*.log' | xargs wc -l | tail -n1 | cut -d' ' -f3)
+ENCRYPTED_COUNT=$(find ./ -name 'syspass-stresstest-run-*.log' | xargs wc -l | tail -n1 | awk '{total += $1} END{print total}')
 echo "$ENCRYPTED_COUNT" passwords in "$DURATION_SECONDS" seconds
-
-rm syspass-stresstest-run-*.log
